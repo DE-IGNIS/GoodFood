@@ -1,16 +1,22 @@
 import { useEffect, useState } from "react";
+import axios from "axios";
 
 function App() {
-  const [info, setInfo] = useState();
+  const [info, setInfo] = useState(null);
   const [loading, setLoading] = useState(true);
 
-  useEffect(() => {
-    axios
-      .get(`${import.meta.env.VITE_API_URL}/api`)
-      .then((res) => setInfo(res.data))
-      .catch((err) => console.error(err));
-    setLoading(false);
-  }, []);
+ useEffect(() => {
+  axios
+    .get(`${import.meta.env.VITE_API_URL}/api`)
+    .then((res) => {
+      setInfo(res.data);
+      setLoading(false);
+    })
+    .catch((err) => {
+      console.error(err);
+      setLoading(false);
+    });
+}, []);
 
   return (
     <div>
