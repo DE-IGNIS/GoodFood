@@ -6,12 +6,12 @@ function App() {
 
   useEffect(() => {
     axios
-      .get(`${process.env.REACT_APP_API_URL}/api`)
+      .get(`${import.meta.env.VITE_API_URL}/api`)
       .then((res) => setInfo(res.data))
       .catch((err) => console.error(err));
     setLoading(false);
   }, []);
-  
+
   return (
     <div>
       <p>Hello my name is prince</p>
