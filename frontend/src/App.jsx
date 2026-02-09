@@ -5,11 +5,13 @@ function App() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch("http://localhost:3000/api")
-      .then((res) => res.json())
-      .then((data) => setInfo(data));
+    axios
+      .get(`${process.env.REACT_APP_API_URL}/api`)
+      .then((res) => setInfo(res.data))
+      .catch((err) => console.error(err));
     setLoading(false);
   }, []);
+  
   return (
     <div>
       <p>Hello my name is prince</p>
