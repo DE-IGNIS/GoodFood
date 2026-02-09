@@ -3,11 +3,11 @@ const fetch = require("node-fetch");
 const cors = require("cors");
 
 const app = express();
-const PORT = 3000;
+const PORT = 5000;
 
 app.use(
   cors({
-    origin: "http://localhost:5173",
+    origin: "*",
   }),
 );
 
